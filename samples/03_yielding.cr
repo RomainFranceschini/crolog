@@ -4,9 +4,9 @@ Crolog.load "#{__DIR__}/sample.pl"
 
 
 def humans
-  query human(x) do
+  query human(x) {
     yield x
-  end
+  }
 end
 
 humans do |h|

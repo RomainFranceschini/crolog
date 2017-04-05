@@ -11,14 +11,14 @@ rule male(:carl)
 rule female(:mary)
 rule female(:sandy)
 
-rule human(y) do
+rule human(y) {
   male(y)
-end
+}
 
-rule human(z) do
+rule human(z) {
   female(z)
-end
+}
 
-query human(x) do
+query human(x) {
   puts "#{x} is human"
-end
+}

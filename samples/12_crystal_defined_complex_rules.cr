@@ -14,11 +14,11 @@ rule female(:sandy)
 rule young(:andy)
 rule young(:sandy)
 
-rule boy(y) do
+rule boy(y) {
   male(y)
   young(y)
-end
+}
 
-query boy(x) do
+query boy(x) {
   puts "#{x} is a boy"
-end
+}

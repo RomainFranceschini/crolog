@@ -8,6 +8,6 @@ rule male(:john)
 rule male(:andy)
 rule male(:carl)
 
-query male(m) do
+query male(m) {
   puts m
-end
+}

@@ -20,5 +20,5 @@ macro translate_clause_to(dest, clause)
 end
 
 macro term_n(term, n)
-  ((({{term}} as UInt8*) + {{n}}) as LibProlog::Term)
+  ({{term}}.as(UInt8*) + {{n}}).as(LibProlog::Term)
 end

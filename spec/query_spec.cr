@@ -10,9 +10,9 @@ describe Crolog do
 
     a = [] of String
 
-    query male(y) do
+    query male(y) {
       a << y.string
-    end
+    }
 
     a.should eq(["john", "andy", "carl"])
   end
@@ -30,15 +30,15 @@ describe Crolog do
     rule young2(:andy)
     rule young2(:sandy)
 
-    rule boy2(y) do
+    rule boy2(y) {
       male2(y)
       young2(y)
-    end
+    }
 
     a = [] of String
-    query boy2(y) do
+    query boy2(y) {
       a << y.string
-    end
+    }
 
     a.should eq(["andy"])
   end
@@ -52,16 +52,16 @@ describe Crolog do
     rule young3(:andy)
     rule happy3(:andy)
 
-    rule boy3(y) do
+    rule boy3(y) {
       male3(y)
       young3(y)
       happy3(y)
-    end
+    }
 
     a = [] of String
-    query boy3(y) do
+    query boy3(y) {
       a << y.string
-    end
+    }
 
     a.should eq(["andy"])
   end
@@ -72,9 +72,9 @@ describe Crolog do
     rule related(:foo, :bar)
 
     a = [] of {String,String}
-    query related(x, y) do
+    query related(x, y) {
       a << {x.string, y.string}
-    end
+    }
 
     a.should eq([{"foo", "bar"}])
   end
@@ -85,14 +85,14 @@ describe Crolog do
 
     rule fact2(:foo, :bar)
 
-    rule related2(x, y) do
+    rule related2(x, y) {
       fact2(y, x)
-    end
+    }
 
     a = [] of {String,String}
-    query related2(j, k) do
+    query related2(j, k) {
       a << {j.string, k.string}
-    end
+    }
 
     a.should eq([{"bar", "foo"}])
   end
@@ -101,9 +101,9 @@ describe Crolog do
     Crolog.load
 
     a = [] of Int32
-    query between(1,4,x as Int32) do
+    query between(1,4,x.as(Int32)) {
       a << x
-    end
+    }
 
     a.should eq([1,2,3,4])
   end
@@ -111,14 +111,14 @@ describe Crolog do
   it "should yield ints" do
     Crolog.load
 
-    rule between2(0, y) do
+    rule between2(0, y) {
       between(1,2,y)
-    end
+    }
 
     a = [] of {Int32,Int32}
-    query between2(x as Int32, y as Int32) do
+    query between2(x.as(Int32), y.as(Int32)) {
       a << {x,y}
-    end
+    }
 
     a.should eq([{0,1},{0,2}])
   end

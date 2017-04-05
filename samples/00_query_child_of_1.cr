@@ -5,6 +5,6 @@ Crolog.load "#{__DIR__}/sample.pl"
 puts "joe's parents"
 
 # ?- child_of(X, jdoe)
-query child_of(x, :joe) do
+query child_of(x, :joe) {
   puts x
-end
+}
